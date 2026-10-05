@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Guides - NIXATV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800;1,900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ffab00',
+                        darkbg: '#0f0f0f',
+                        cardbg: '#141414',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #fcfcfc; color: #111; scroll-behavior: smooth; }
+        
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+    </style>
+</head>
+<body class="antialiased font-sans">
+    
+    <!-- Top Navbar -->
+    <nav class="bg-[#0f0f0f] text-white py-4 px-6 md:px-12 flex justify-between items-center sticky top-0 z-50">
+        <a href="index.html" class="text-2xl font-black italic tracking-tighter flex items-center gap-2 hover:opacity-80 transition cursor-pointer">
+            <svg class="w-8 h-8 text-primary" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            <span class="text-white">NIXA</span><span class="text-primary">TV</span>
+        </a>
+        
+        <div class="hidden md:flex space-x-8 text-xs font-bold tracking-widest uppercase items-center">
+            <a href="index.html" class="hover:text-primary transition text-white">HOME</a>
+            <a href="index.html#pricing" class="hover:text-primary transition">PRICING</a>
+            <a href="index.html#features" class="hover:text-primary transition">FEATURES</a>
+            <a href="index.html#channels" class="hover:text-primary transition">CHANNELS</a>
+            <a href="setup.html" class="text-primary">TUTORIALS</a>
+            <a href="index.html#faq" class="hover:text-primary transition">FAQ</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a href="https://wa.me/447988577652" class="hidden md:flex bg-primary text-black px-6 py-2.5 rounded-full font-black text-xs uppercase tracking-widest hover:bg-yellow-500 transition items-center gap-2">
+                CONTACT US
+            </a>
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" class="md:hidden text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden bg-[#0f0f0f] text-white flex-col space-y-4 px-6 py-6 border-t border-gray-800 absolute w-full z-40 shadow-2xl">
+        <a href="index.html" class="hover:text-primary font-bold tracking-widest uppercase transition">HOME</a>
+        <a href="index.html#pricing" class="hover:text-primary font-bold tracking-widest uppercase transition">PRICING</a>
+        <a href="index.html#features" class="hover:text-primary font-bold tracking-widest uppercase transition">FEATURES</a>
+        <a href="index.html#channels" class="hover:text-primary font-bold tracking-widest uppercase transition">CHANNELS</a>
+        <a href="setup.html" class="text-primary font-bold tracking-widest uppercase">TUTORIALS</a>
+        <a href="index.html#faq" class="hover:text-primary font-bold tracking-widest uppercase transition">FAQ</a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="bg-[#fcfcfc] py-16 px-4 min-h-[80vh]">
+        <div class="max-w-[1100px] mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-[2.75rem] font-black italic uppercase tracking-tight text-[#111]">
+                    SETUP <span class="text-primary">GUIDES</span>
+                </h1>
+                <p class="text-gray-500 font-medium text-[13px] mt-3">Follow these simple tutorials to set up NIXATV on your preferred device.</p>
+            </div>
+
+            <!-- Grid Layout -->
+            <div class="grid md:grid-cols-4 gap-8">
+                
+                <!-- Left Sidebar (Menu) -->
+                <div class="md:col-span-1 flex flex-col gap-3" id="deviceTabs">
+                    <h3 class="text-[10px] font-bold tracking-widest text-gray-500 uppercase mb-2 pl-2">SELECT YOUR DEVICE</h3>
+                    
+                    <button onclick="switchTab('firestick')" data-target="firestick" class="tab-btn flex items-center gap-4 bg-[#fffdf8] border border-primary text-[#111] p-3 rounded-xl shadow-sm transition hover:shadow-md text-left w-full group">
+                        <div class="icon-bg bg-primary text-black border-transparent w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <span class="btn-text font-black text-[11px] uppercase tracking-widest">AMAZON FIRESTICK</span>
+                    </button>
+                    
+                    <button onclick="switchTab('android')" data-target="android" class="tab-btn flex items-center gap-4 bg-white border border-gray-200 text-gray-600 p-3 rounded-xl shadow-sm transition hover:border-primary hover:text-[#111] text-left w-full group">
+                        <div class="icon-bg bg-gray-50 border border-gray-200 text-gray-400 group-hover:bg-primary/10 group-hover:text-primary group-hover:border-primary/20 w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <span class="btn-text font-bold text-[11px] uppercase tracking-widest">ANDROID TV / BOX</span>
+                    </button>
+                    
+                    <button onclick="switchTab('smarttv')" data-target="smarttv" class="tab-btn flex items-center gap-4 bg-white border border-gray-200 text-gray-600 p-3 rounded-xl shadow-sm transition hover:border-primary hover:text-[#111] text-left w-full group">
+                        <div class="icon-bg bg-gray-50 border border-gray-200 text-gray-400 group-hover:bg-primary/10 group-hover:text-primary group-hover:border-primary/20 w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <span class="btn-text font-bold text-[11px] uppercase tracking-widest">SMART TV (LG/SAMSUNG)</span>
+                    </button>
+                    
+                    <button onclick="switchTab('apple')" data-target="apple" class="tab-btn flex items-center gap-4 bg-white border border-gray-200 text-gray-600 p-3 rounded-xl shadow-sm transition hover:border-primary hover:text-[#111] text-left w-full group">
+                        <div class="icon-bg bg-gray-50 border border-gray-200 text-gray-400 group-hover:bg-primary/10 group-hover:text-primary group-hover:border-primary/20 w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <span class="btn-text font-bold text-[11px] uppercase tracking-widest">APPLE (IOS/APPLE TV)</span>
+                    </button>
+
+                    <button onclick="switchTab('pc')" data-target="pc" class="tab-btn flex items-center gap-4 bg-white border border-gray-200 text-gray-600 p-3 rounded-xl shadow-sm transition hover:border-primary hover:text-[#111] text-left w-full group">
+                        <div class="icon-bg bg-gray-50 border border-gray-200 text-gray-400 group-hover:bg-primary/10 group-hover:text-primary group-hover:border-primary/20 w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <span class="btn-text font-bold text-[11px] uppercase tracking-widest">PC / MACBOOK</span>
+                    </button>
+
+                    <button onclick="switchTab('mag')" data-target="mag" class="tab-btn flex items-center gap-4 bg-white border border-gray-200 text-gray-600 p-3 rounded-xl shadow-sm transition hover:border-primary hover:text-[#111] text-left w-full group">
+                        <div class="icon-bg bg-gray-50 border border-gray-200 text-gray-400 group-hover:bg-primary/10 group-hover:text-primary group-hover:border-primary/20 w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                        </div>
+                        <span class="btn-text font-bold text-[11px] uppercase tracking-widest">MAG BOX / STB</span>
+                    </button>
+                </div>
+
+                <!-- Right Content Area -->
+                <div class="md:col-span-3">
+                    <div class="bg-white rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-gray-100 p-8 md:p-12 relative min-h-[500px]">
+                        
+                        <!-- Firestick Content -->
+                        <div id="content-firestick" class="tab-content transition-opacity duration-300">
+                            <div class="flex items-center gap-5 mb-8">
+                                <div class="bg-primary text-black w-14 h-14 rounded-xl flex items-center justify-center shrink-0 shadow-lg shadow-primary/20">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                </div>
+                                <div>
+                                    <h2 class="text-2xl font-black uppercase tracking-tight text-[#111] leading-none mb-1">AMAZON FIRESTICK</h2>
+                                    <div class="text-primary font-bold text-[10px] tracking-widest uppercase">STEP-BY-STEP GUIDE</div>
+                                </div>
+                            </div>
+                            <hr class="border-gray-100 mb-8">
+                            <ul class="space-y-6">
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">1</div><p class="text-gray-500 font-medium text-sm pt-1">Go to Main Menu > Settings > My Fire TV.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">2</div><p class="text-gray-500 font-medium text-sm pt-1">Select "Developer Options" and turn on "Apps from Unknown Sources".</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">3</div><p class="text-gray-500 font-medium text-sm pt-1">Go back to home, search for "Downloader" app and install it.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">4</div><p class="text-gray-500 font-medium text-sm pt-1">Open Downloader and enter this URL: <span class="text-gray-700">http://iptvsmarters.com/smarters.apk</span></p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">5</div><p class="text-gray-500 font-medium text-sm pt-1">Click Go, wait for download, then click Install.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">6</div><p class="text-gray-500 font-medium text-sm pt-1">Open the app, select "Login with Xtream Codes API".</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">7</div><p class="text-gray-500 font-medium text-sm pt-1">Enter the details received in your email (Username, Password, URL).</p></li>
+                            </ul>
+                        </div>
+
+                        <!-- Android TV Content -->
+                        <div id="content-android" class="tab-content hidden transition-opacity duration-300">
+                            <div class="flex items-center gap-5 mb-8">
+                                <div class="bg-primary text-black w-14 h-14 rounded-xl flex items-center justify-center shrink-0 shadow-lg shadow-primary/20">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                                </div>
+                                <div>
+                                    <h2 class="text-2xl font-black uppercase tracking-tight text-[#111] leading-none mb-1">ANDROID TV / BOX</h2>
+                                    <div class="text-primary font-bold text-[10px] tracking-widest uppercase">STEP-BY-STEP GUIDE</div>
+                                </div>
+                            </div>
+                            <hr class="border-gray-100 mb-8">
+                            <ul class="space-y-6">
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">1</div><p class="text-gray-500 font-medium text-sm pt-1">Go to the Google Play Store on your Android TV or Box.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">2</div><p class="text-gray-500 font-medium text-sm pt-1">Search for the app <span class="text-gray-700 font-bold">IPTV Smarters Pro</span> or <span class="text-gray-700 font-bold">TiviMate</span>.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">3</div><p class="text-gray-500 font-medium text-sm pt-1">Click Install and wait for the application to download.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">4</div><p class="text-gray-500 font-medium text-sm pt-1">Open the app and select "Add New User" or "Login with Xtream Codes API".</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">5</div><p class="text-gray-500 font-medium text-sm pt-1">Enter your assigned Name, Username, Password, and Server URL provided by us.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">6</div><p class="text-gray-500 font-medium text-sm pt-1">Click "Add User" and you will be logged in to enjoy your live channels and VODs.</p></li>
+                            </ul>
+                        </div>
+
+                        <!-- Smart TV Content -->
+                        <div id="content-smarttv" class="tab-content hidden transition-opacity duration-300">
+                            <div class="flex items-center gap-5 mb-8">
+                                <div class="bg-primary text-black w-14 h-14 rounded-xl flex items-center justify-center shrink-0 shadow-lg shadow-primary/20">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                </div>
+                                <div>
+                                    <h2 class="text-2xl font-black uppercase tracking-tight text-[#111] leading-none mb-1">SMART TV (LG/SAMSUNG)</h2>
+                                    <div class="text-primary font-bold text-[10px] tracking-widest uppercase">STEP-BY-STEP GUIDE</div>
+                                </div>
+                            </div>
+                            <hr class="border-gray-100 mb-8">
+                            <ul class="space-y-6">
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">1</div><p class="text-gray-500 font-medium text-sm pt-1">Go to the App Store on your LG or Samsung Smart TV.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">2</div><p class="text-gray-500 font-medium text-sm pt-1">Search for an IPTV application like <span class="text-gray-700 font-bold">IBO Player</span> or <span class="text-gray-700 font-bold">Flix IPTV</span>.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">3</div><p class="text-gray-500 font-medium text-sm pt-1">Install and open the application.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">4</div><p class="text-gray-500 font-medium text-sm pt-1">The app will display your TV's MAC Address and Device Key on the screen.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">5</div><p class="text-gray-500 font-medium text-sm pt-1">Send us a message on WhatsApp with your MAC Address, or upload the M3U playlist link we gave you on the app's website.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">6</div><p class="text-gray-500 font-medium text-sm pt-1">Restart your TV app and the channels will load automatically.</p></li>
+                            </ul>
+                        </div>
+
+                        <!-- Apple Content -->
+                        <div id="content-apple" class="tab-content hidden transition-opacity duration-300">
+                            <div class="flex items-center gap-5 mb-8">
+                                <div class="bg-primary text-black w-14 h-14 rounded-xl flex items-center justify-center shrink-0 shadow-lg shadow-primary/20">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                </div>
+                                <div>
+                                    <h2 class="text-2xl font-black uppercase tracking-tight text-[#111] leading-none mb-1">APPLE (IOS / APPLE TV)</h2>
+                                    <div class="text-primary font-bold text-[10px] tracking-widest uppercase">STEP-BY-STEP GUIDE</div>
+                                </div>
+                            </div>
+                            <hr class="border-gray-100 mb-8">
+                            <ul class="space-y-6">
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">1</div><p class="text-gray-500 font-medium text-sm pt-1">Open the Apple App Store on your device.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">2</div><p class="text-gray-500 font-medium text-sm pt-1">Search for <span class="text-gray-700 font-bold">Smarters Player Lite</span> or <span class="text-gray-700 font-bold">GSE Smart IPTV</span>.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">3</div><p class="text-gray-500 font-medium text-sm pt-1">Download and install the app.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">4</div><p class="text-gray-500 font-medium text-sm pt-1">Open the app and accept any terms and conditions.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">5</div><p class="text-gray-500 font-medium text-sm pt-1">Select "Login with Xtream Codes API".</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">6</div><p class="text-gray-500 font-medium text-sm pt-1">Enter the Username, Password, and URL that we sent to your email.</p></li>
+                            </ul>
+                        </div>
+
+                        <!-- PC Content -->
+                        <div id="content-pc" class="tab-content hidden transition-opacity duration-300">
+                            <div class="flex items-center gap-5 mb-8">
+                                <div class="bg-primary text-black w-14 h-14 rounded-xl flex items-center justify-center shrink-0 shadow-lg shadow-primary/20">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                </div>
+                                <div>
+                                    <h2 class="text-2xl font-black uppercase tracking-tight text-[#111] leading-none mb-1">PC / MACBOOK</h2>
+                                    <div class="text-primary font-bold text-[10px] tracking-widest uppercase">STEP-BY-STEP GUIDE</div>
+                                </div>
+                            </div>
+                            <hr class="border-gray-100 mb-8">
+                            <ul class="space-y-6">
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">1</div><p class="text-gray-500 font-medium text-sm pt-1">Download VLC Media Player from their official website (videolan.org).</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">2</div><p class="text-gray-500 font-medium text-sm pt-1">Install and open VLC Media Player on your PC or Mac.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">3</div><p class="text-gray-500 font-medium text-sm pt-1">Go to "Media" > "Open Network Stream" in the top menu.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">4</div><p class="text-gray-500 font-medium text-sm pt-1">Paste the <span class="text-gray-700 font-bold">M3U Playlist URL</span> you received from us into the network URL field.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">5</div><p class="text-gray-500 font-medium text-sm pt-1">Click "Play" and wait a few seconds for the channel list to load.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">6</div><p class="text-gray-500 font-medium text-sm pt-1">Alternatively, you can download the IPTV Smarters app for Windows/Mac.</p></li>
+                            </ul>
+                        </div>
+
+                        <!-- MAG Box Content -->
+                        <div id="content-mag" class="tab-content hidden transition-opacity duration-300">
+                            <div class="flex items-center gap-5 mb-8">
+                                <div class="bg-primary text-black w-14 h-14 rounded-xl flex items-center justify-center shrink-0 shadow-lg shadow-primary/20">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                                </div>
+                                <div>
+                                    <h2 class="text-2xl font-black uppercase tracking-tight text-[#111] leading-none mb-1">MAG BOX / STB</h2>
+                                    <div class="text-primary font-bold text-[10px] tracking-widest uppercase">STEP-BY-STEP GUIDE</div>
+                                </div>
+                            </div>
+                            <hr class="border-gray-100 mb-8">
+                            <ul class="space-y-6">
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">1</div><p class="text-gray-500 font-medium text-sm pt-1">Find your MAC Address on the sticker under your MAG Box (Format: 00:1A:79:XX:XX:XX).</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">2</div><p class="text-gray-500 font-medium text-sm pt-1">Send us this MAC Address on WhatsApp so we can activate it on our server.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">3</div><p class="text-gray-500 font-medium text-sm pt-1">Turn on your MAG device and go to Settings > System Settings.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">4</div><p class="text-gray-500 font-medium text-sm pt-1">Go to Servers > Portals.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">5</div><p class="text-gray-500 font-medium text-sm pt-1">Set Portal 1 Name as "NIXATV" and enter the Portal URL we gave you.</p></li>
+                                <li class="flex gap-6"><div class="w-7 h-7 rounded-full bg-[#fffcf5] border border-primary/30 text-primary font-black flex items-center justify-center shrink-0 text-xs">6</div><p class="text-gray-500 font-medium text-sm pt-1">Click OK to save, return to the main menu, and reboot the portal.</p></li>
+                            </ul>
+                        </div>
+
+                        <!-- Need extra help box -->
+                        <div class="mt-12 bg-[#f4f5f7] rounded-[1rem] p-6 md:p-8 flex items-start gap-4">
+                            <div class="text-primary shrink-0 mt-0.5">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-[#111] font-black text-[13px] mb-1.5">Need extra help?</h4>
+                                <p class="text-gray-500 text-xs font-medium mb-3 leading-relaxed" id="help-text">If you are facing issues setting up your device, contact our 24/7 support team on WhatsApp.</p>
+                                <a href="https://wa.me/447988577652" class="text-primary font-bold text-[11px] tracking-widest uppercase hover:underline flex items-center gap-1">Contact Support &rarr;</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#0f0f0f] text-white pt-16 pb-8 border-t-[6px] border-primary">
+        <div class="max-w-[1100px] mx-auto px-4 grid md:grid-cols-3 gap-10 mb-10 border-b border-gray-800 pb-10 text-center md:text-left">
+            <div>
+                <div class="text-xl font-black italic tracking-tighter mb-4">
+                    <span class="text-white">ABOUT </span><span class="text-primary">US</span>
+                </div>
+                <p class="text-gray-400 text-[11px] leading-relaxed mb-6 font-medium">NIXATV offers the best streaming service worldwide. We ensure minimal buffering, high uptime, and premium support. Join the revolution of television today.</p>
+                <div class="flex items-center justify-center md:justify-start gap-3">
+                    <a href="#" class="w-8 h-8 rounded bg-[#141414] border border-gray-800 flex items-center justify-center text-gray-500 hover:text-white transition">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                    </a>
+                    <a href="mailto:support@nixatv.com" class="w-8 h-8 rounded bg-[#141414] border border-gray-800 flex items-center justify-center text-gray-500 hover:text-white transition">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <div class="text-lg font-black italic tracking-tighter mb-4">
+                    <span class="text-white">TOP </span><span class="text-primary">ARTICLES</span>
+                </div>
+                <ul class="text-gray-400 text-[11px] space-y-4 font-medium">
+                    <li>
+                        <a href="#" class="hover:text-primary transition font-bold block mb-1">Best IPTV for Firestick</a>
+                        <span class="text-[9px] text-gray-600">May 15, 2026</span>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:text-primary transition font-bold block mb-1">Best IPTV Review 2026</a>
+                        <span class="text-[9px] text-gray-600">May 10, 2026</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <div class="text-lg font-black italic tracking-tighter mb-4">
+                    <span class="text-white">PAYMENT </span><span class="text-primary">METHOD</span>
+                </div>
+                <div class="grid grid-cols-2 gap-2 max-w-[200px] mx-auto md:mx-0">
+                    <div class="border border-gray-800 text-white px-4 py-3 rounded text-[10px] font-bold text-center bg-[#141414] flex items-center justify-center gap-2"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg> PayPal</div>
+                    <div class="border border-gray-800 text-white px-4 py-3 rounded text-[10px] font-bold text-center bg-[#141414] flex items-center justify-center gap-2"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg> Crypto</div>
+                    <div class="border border-gray-800 text-white px-4 py-3 rounded text-[10px] font-bold text-center bg-[#141414] flex items-center justify-center gap-2"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg> Bank</div>
+                    <div class="border border-gray-800 text-white px-4 py-3 rounded text-[10px] font-bold text-center bg-[#141414] flex items-center justify-center gap-2"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg> Card</div>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-[1100px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-gray-600 text-[9px] font-bold tracking-widest uppercase">
+            <div class="flex gap-4 mb-4 md:mb-0">
+                <a href="#" class="hover:text-white transition">Home</a>
+                <a href="#" class="hover:text-white transition">Blog</a>
+                <a href="#" class="hover:text-white transition">Contact Us</a>
+                <a href="#" class="hover:text-white transition">Terms and Conditions</a>
+                <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition">Refund Policy</a>
+            </div>
+            <div>
+                &copy; 2026 NIXATV. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/447988577652" class="whatsapp-float">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 1.856.001 3.598.723 4.907 2.034 1.31 1.311 2.031 3.054 2.03 4.908-.001 3.825-3.113 6.938-6.937 6.938z"></path></svg>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle Logic
+        document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+            }
+        }
+
+        // Setup Guide Tab Switching Logic
+        function switchTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.add('hidden');
+            });
+            // Show the target tab
+            document.getElementById('content-' + tabId).classList.remove('hidden');
+
+            // Reset all buttons to inactive state
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                // Reset wrapper
+                btn.className = 'tab-btn flex items-center gap-4 bg-white border border-gray-200 text-gray-600 p-3 rounded-xl shadow-sm transition hover:border-primary hover:text-[#111] text-left w-full group';
+                // Reset text
+                btn.querySelector('.btn-text').className = 'btn-text font-bold text-[11px] uppercase tracking-widest';
+                // Reset icon bg
+                btn.querySelector('.icon-bg').className = 'icon-bg bg-gray-50 border border-gray-200 text-gray-400 group-hover:bg-primary/10 group-hover:text-primary group-hover:border-primary/20 w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition';
+            });
+
+            // Set the clicked button to active state
+            const activeBtn = document.querySelector(`.tab-btn[data-target="${tabId}"]`);
+            activeBtn.className = 'tab-btn flex items-center gap-4 bg-[#fffdf8] border border-primary text-[#111] p-3 rounded-xl shadow-sm transition hover:shadow-md text-left w-full group';
+            activeBtn.querySelector('.btn-text').className = 'btn-text font-black text-[11px] uppercase tracking-widest';
+            activeBtn.querySelector('.icon-bg').className = 'icon-bg bg-primary text-black border-transparent w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition';
+
+            // Update the help text device name
+            const deviceNames = {
+                'firestick': 'Amazon Firestick',
+                'android': 'Android TV / Box',
+                'smarttv': 'Smart TV',
+                'apple': 'Apple Device',
+                'pc': 'PC / Mac',
+                'mag': 'MAG Box'
+            };
+            document.getElementById('help-text').textContent = `If you are facing issues setting up your ${deviceNames[tabId]}, contact our 24/7 support team on WhatsApp.`;
+        }
+    </script>
+</body>
+</html>
