@@ -210,33 +210,60 @@
         </div>
 
         <!-- Channels List -->
-        <section id="channels" class="py-16 text-center border-t border-gray-200">
+        <section id="channels" class="py-16 text-center border-t border-gray-200 overflow-hidden relative">
             <h2 class="text-3xl md:text-4xl font-black italic uppercase text-[#111] tracking-tight">TOP GLOBAL & <span class="text-primary">LOCAL CHANNELS</span></h2>
             <p class="text-gray-500 text-sm font-semibold mt-3 mb-12 px-4 italic">"Enjoy the best IPTV channels: News, Sports, Kids, Documentaries, Movies, and more!"</p>
             
-            <div class="max-w-5xl mx-auto grid grid-cols-4 md:grid-cols-7 gap-y-10 gap-x-6 items-center justify-items-center opacity-80 filter grayscale hover:grayscale-0 transition duration-500 px-4 text-[#111]">
-                <div class="font-black text-2xl tracking-tighter border-2 border-[#111] rounded-full w-12 h-12 flex items-center justify-center">W</div>
-                <div class="font-black text-2xl tracking-tighter">H B O</div>
-                <div class="font-black text-xl flex flex-col leading-none">HBO<span class="text-sm">max</span></div>
-                <div class="font-black text-3xl font-serif lowercase bg-[#111] text-white px-2 rounded">tbs</div>
-                <div class="font-black text-2xl bg-[#111] text-white rounded-full w-12 h-12 flex items-center justify-center italic">TNT</div>
-                <div class="font-black text-3xl lowercase tracking-tighter">tru<span class="text-sm font-normal align-top">TV</span></div>
-                <div class="font-black text-xl bg-[#111] text-white p-1.5 border-l-2 border-r-2 border-red-600">CNN</div>
-                <div class="font-black text-xl bg-[#111] text-white px-2 py-1">HLN</div>
-                <div class="font-black text-lg transform -skew-x-12 bg-[#111] text-white px-2">BOOM</div>
-                <div class="font-black text-3xl tracking-tighter">CN</div>
-                <div class="font-bold text-sm tracking-tight">[adult swim]</div>
-                <div class="font-black text-xl bg-[#111] text-white px-2 transform -skew-x-6">CINEMAX</div>
-                <div class="font-black text-2xl border-2 border-[#111] rounded-full w-12 h-12 flex items-center justify-center">DC</div>
-                <div class="font-black text-xl tracking-tighter" style="-webkit-text-stroke: 1px #111; color: white;">tooncast</div>
-                <div class="font-serif text-xl bg-[#111] text-white px-2">T C M</div>
-                <div class="font-black text-2xl italic tracking-tighter flex items-center"><span class="bg-[#111] text-white px-1 mr-1">7</span> SPORTS</div>
-                <div class="font-black text-2xl bg-[#111] text-white px-2">B/R</div>
-                <div class="font-black text-xl italic flex items-center"><svg class="w-6 h-6 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z"/></svg> ROOSTER</div>
-                <div class="font-black text-2xl font-serif tracking-widest bg-[#111] text-white px-2">Pogo</div>
-                <div class="font-black text-xl bg-[#111] text-white p-1.5 border-l-2 border-r-2 border-red-600">CNN<span class="text-[8px] block">INTL</span></div>
-                <div class="font-black text-xl italic tracking-widest">MONDO<span class="text-xs">TV</span></div>
-                <div class="font-black text-2xl tracking-tighter border-2 border-[#111] rounded-full w-12 h-12 flex items-center justify-center">W<span class="text-sm">TV</span></div>
+            <div class="w-full relative opacity-80 filter grayscale hover:grayscale-0 transition duration-500 overflow-hidden">
+                <div class="animate-marquee flex items-center gap-16 px-8 text-[#111]">
+                    <!-- Set 1 -->
+                    <div class="font-black text-2xl tracking-tighter border-2 border-[#111] rounded-full w-12 h-12 flex items-center justify-center shrink-0">W</div>
+                    <div class="font-black text-2xl tracking-tighter shrink-0">H B O</div>
+                    <div class="font-black text-xl flex flex-col leading-none shrink-0">HBO<span class="text-sm">max</span></div>
+                    <div class="font-black text-3xl font-serif lowercase bg-[#111] text-white px-2 rounded shrink-0">tbs</div>
+                    <div class="font-black text-2xl bg-[#111] text-white rounded-full w-12 h-12 flex items-center justify-center italic shrink-0">TNT</div>
+                    <div class="font-black text-3xl lowercase tracking-tighter shrink-0">tru<span class="text-sm font-normal align-top">TV</span></div>
+                    <div class="font-black text-xl bg-[#111] text-white p-1.5 border-l-2 border-r-2 border-red-600 shrink-0">CNN</div>
+                    <div class="font-black text-xl bg-[#111] text-white px-2 py-1 shrink-0">HLN</div>
+                    <div class="font-black text-lg transform -skew-x-12 bg-[#111] text-white px-2 shrink-0">BOOM</div>
+                    <div class="font-black text-3xl tracking-tighter shrink-0">CN</div>
+                    <div class="font-bold text-sm tracking-tight shrink-0">[adult swim]</div>
+                    <div class="font-black text-xl bg-[#111] text-white px-2 transform -skew-x-6 shrink-0">CINEMAX</div>
+                    <div class="font-black text-2xl border-2 border-[#111] rounded-full w-12 h-12 flex items-center justify-center shrink-0">DC</div>
+                    <div class="font-black text-xl tracking-tighter shrink-0" style="-webkit-text-stroke: 1px #111; color: white;">tooncast</div>
+                    <div class="font-serif text-xl bg-[#111] text-white px-2 shrink-0">T C M</div>
+                    <div class="font-black text-2xl italic tracking-tighter flex items-center shrink-0"><span class="bg-[#111] text-white px-1 mr-1">7</span> SPORTS</div>
+                    <div class="font-black text-2xl bg-[#111] text-white px-2 shrink-0">B/R</div>
+                    <div class="font-black text-xl italic flex items-center shrink-0"><svg class="w-6 h-6 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z"/></svg> ROOSTER</div>
+                    <div class="font-black text-2xl font-serif tracking-widest bg-[#111] text-white px-2 shrink-0">Pogo</div>
+                    <div class="font-black text-xl bg-[#111] text-white p-1.5 border-l-2 border-r-2 border-red-600 shrink-0">CNN<span class="text-[8px] block">INTL</span></div>
+                    <div class="font-black text-xl italic tracking-widest shrink-0">MONDO<span class="text-xs">TV</span></div>
+                    <div class="font-black text-2xl tracking-tighter border-2 border-[#111] rounded-full w-12 h-12 flex items-center justify-center shrink-0">W<span class="text-sm">TV</span></div>
+                    
+                    <!-- Set 2 -->
+                    <div class="font-black text-2xl tracking-tighter border-2 border-[#111] rounded-full w-12 h-12 flex items-center justify-center shrink-0">W</div>
+                    <div class="font-black text-2xl tracking-tighter shrink-0">H B O</div>
+                    <div class="font-black text-xl flex flex-col leading-none shrink-0">HBO<span class="text-sm">max</span></div>
+                    <div class="font-black text-3xl font-serif lowercase bg-[#111] text-white px-2 rounded shrink-0">tbs</div>
+                    <div class="font-black text-2xl bg-[#111] text-white rounded-full w-12 h-12 flex items-center justify-center italic shrink-0">TNT</div>
+                    <div class="font-black text-3xl lowercase tracking-tighter shrink-0">tru<span class="text-sm font-normal align-top">TV</span></div>
+                    <div class="font-black text-xl bg-[#111] text-white p-1.5 border-l-2 border-r-2 border-red-600 shrink-0">CNN</div>
+                    <div class="font-black text-xl bg-[#111] text-white px-2 py-1 shrink-0">HLN</div>
+                    <div class="font-black text-lg transform -skew-x-12 bg-[#111] text-white px-2 shrink-0">BOOM</div>
+                    <div class="font-black text-3xl tracking-tighter shrink-0">CN</div>
+                    <div class="font-bold text-sm tracking-tight shrink-0">[adult swim]</div>
+                    <div class="font-black text-xl bg-[#111] text-white px-2 transform -skew-x-6 shrink-0">CINEMAX</div>
+                    <div class="font-black text-2xl border-2 border-[#111] rounded-full w-12 h-12 flex items-center justify-center shrink-0">DC</div>
+                    <div class="font-black text-xl tracking-tighter shrink-0" style="-webkit-text-stroke: 1px #111; color: white;">tooncast</div>
+                    <div class="font-serif text-xl bg-[#111] text-white px-2 shrink-0">T C M</div>
+                    <div class="font-black text-2xl italic tracking-tighter flex items-center shrink-0"><span class="bg-[#111] text-white px-1 mr-1">7</span> SPORTS</div>
+                    <div class="font-black text-2xl bg-[#111] text-white px-2 shrink-0">B/R</div>
+                    <div class="font-black text-xl italic flex items-center shrink-0"><svg class="w-6 h-6 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z"/></svg> ROOSTER</div>
+                    <div class="font-black text-2xl font-serif tracking-widest bg-[#111] text-white px-2 shrink-0">Pogo</div>
+                    <div class="font-black text-xl bg-[#111] text-white p-1.5 border-l-2 border-r-2 border-red-600 shrink-0">CNN<span class="text-[8px] block">INTL</span></div>
+                    <div class="font-black text-xl italic tracking-widest shrink-0">MONDO<span class="text-xs">TV</span></div>
+                    <div class="font-black text-2xl tracking-tighter border-2 border-[#111] rounded-full w-12 h-12 flex items-center justify-center shrink-0">W<span class="text-sm">TV</span></div>
+                </div>
             </div>
             
             <a href="https://wa.me/447988577652" class="inline-block mt-16 text-primary font-black text-xs uppercase tracking-widest border-b-2 border-primary pb-1 hover:text-yellow-600 transition">VIEW FULL CHANNEL LIST</a>
